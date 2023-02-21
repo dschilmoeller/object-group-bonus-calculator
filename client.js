@@ -49,9 +49,90 @@ console.log('array of employee data: ',  employees );
 // This function will calculate 1 employee's bonus!
 //
 function calculateIndividualEmployeeBonus( employee ) {  
-  // your logic here
-  
-  
-  // return new object with bonus results
+  for (let i=0; i<employees.length; i++) {
+    if (employee === employees[i].name) {
+      console.log('name found', employee);
+      //test to see if names are found in object employees
+      //check rating of employee
+      console.log(employees[i].reviewRating); // return review rating
+      let bonus = 0;
+      if (employees[i].reviewRating <= 2) {
+        if (employees[i].employeeNumber.length === 4) {
+          if (employees[i].annualSalary < 65000) {
+            bonus = employees[i].annualSalary*.05
+            console.log('review 1 or 2, employee number 4 digits and < 65K', bonus)
+          } else {
+            bonus = employees[i].annualSalary*.04
+            console.log('review 1 or 2, employee number 5 digits and > 65k', bonus)
+          }
+        } else {
+        console.log('no bonus', bonus)
+        }
+      } else if (employees[i].reviewRating === 3) {
+        if (employees[i].employeeNumber.length === 5) {
+          if (employees[i].annualSalary < 65000) {
+            bonus = .04*employees[i].annualSalary;
+            console.log('review 3, employee number 5 digits and < 65K', bonus)
+          } else {
+            bonus = .03*employees[i].annualSalary;
+            console.log('review 3, employee number 5 digits and > 65K', bonus)
+          }
+        } else {
+          if (employees[i].annualSalary < 65000) {
+            bonus = .09*employees[i].annualSalary;
+            console.log('review 3, employee number 4 digits and < 65K', bonus)
+          } else {
+            bonus = .08*employees[i].annualSalary;
+            console.log('review 3, employee number 4 digits and > 65K', bonus)
+          }
+        }
+      }else if (employees[i].reviewRating === 4) {
+        if (employees[i].employeeNumber.length === 5) {
+          console.log(employees[i].name)
+          console.log(employees[i].annualSalary)
+          if (employees[i].annualSalary < 65000) {
+            bonus = .06*employees[i].annualSalary;
 
+            console.log('review 4, employee number 5 digits and < 65K', bonus) 
+          } else {
+            bonus = .05*employees[i].annualSalary;
+            console.log('review 4, employee number 5 digits and > 65K', bonus) 
+          }
+        } else {
+          if (employees[i].annualSalary < 65000) {
+            bonus = .11*employees[i].annualSalary;
+            console.log('review 4, employee number 4 digits and < 65K', bonus)
+          } else {
+            bonus = .10*employees[i].annualSalary;
+            console.log('review 4, employee number 4 digits and > 65K', bonus)
+          }
+        }
+      } else if (employees[i].reviewRating === 5) {
+        if (employees[i].employeeNumber.length === 5) {
+          if (employees[i].annualSalary < 65000) {
+            bonus = .10*employees[i].annualSalary;
+            console.log('review 5, employee number 5 digits and < 65K', bonus) 
+          } else {
+            bonus = .09*employees[i].annualSalary;
+            console.log('review 5, employee number 5 digits and > 65K', bonus)
+          }
+        } else {
+          if (employees[i].annualSalary < 65000) {
+            bonus = .13*employees[i].annualSalary;
+            console.log('review 5, employee number 4 digits and < 65K', bonus)
+          } else {
+            bonus = .13*employees[i].annualSalary;
+            console.log('review 5, employee number 4 digits and > 65K', bonus)
+          }
+        }
+      } 
+    // return new object with bonus results
+    return bonus;
+    }
+  } 
 }
+console.log('Atticus gets a bonus of $' + calculateIndividualEmployeeBonus('Atticus'));
+console.log('Jem gets a bonus of $' + calculateIndividualEmployeeBonus('Jem'));
+console.log('Scout gets a bonus of $' + calculateIndividualEmployeeBonus('Scout'));
+console.log('Robert gets a bonus of $' + calculateIndividualEmployeeBonus('Robert'));
+console.log('Mayella gets a bonus of $' + calculateIndividualEmployeeBonus('Mayella'));
